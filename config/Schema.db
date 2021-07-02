@@ -1,0 +1,40 @@
+//User Model
+
+CREATE TABLE users(
+    id  serial   primary key,
+    fullname varchar(50) not null,
+    phoneNumber varchar(15) not null,
+    address varchar(255) not null,
+    city varchar(50) not null, 
+    state varchar(50) not null,
+    country varchar(50) not null,
+    email varchar(50) not null,
+    password varchar(50) not null
+  );
+  
+//Add Book
+
+CREATE TABLE books (
+	bookId serial   primary key,
+	title varchar(255) not null,
+    author varchar(50) not null, 
+    publisher varchar(50) not null,
+    price varchar(50) not null,
+    category varchar(50) not null,
+    description varchar(250) not null,
+	img bytea,
+	contentType varchar(20),
+	userId int references users(id) not null
+  );
+  
+  
+//Cart
+
+CREATE TABLE carts (
+		cartid serial primary key,
+		title varchar(255) not null,
+		price int not null not null,
+		bookid int references books(bookid) not null,
+		userid int references users(id) not null
+	);
+  
