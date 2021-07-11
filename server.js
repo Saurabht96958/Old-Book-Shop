@@ -32,7 +32,7 @@ app.use(session({
 app.use('/',routePage);
 app.use('/',addProduct);
 
- 
+
 
 
 app.listen(PORT, console.log('Server is running at port:', PORT));

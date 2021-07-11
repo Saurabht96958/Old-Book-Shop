@@ -21,7 +21,7 @@ CREATE TABLE books (
     publisher varchar(50) not null,
     price varchar(50) not null,
     category varchar(50) not null,
-    description varchar(250) not null,
+    description text not null,
 	img bytea,
 	contentType varchar(20),
 	userId int references users(id) not null

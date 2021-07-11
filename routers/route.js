@@ -4,7 +4,14 @@ const pool = require("../config/db");
 const { check, validationResult, Result } = require("express-validator");
 const { route } = require("./addProduct");
 
+
+
+
 // Home Page
+router.get("/",(req, res)=> {
+    res.redirect("/home");
+});
+
 router.get("/home", async (req, res) => {
     try {
         const result = await pool.query("SELECT * FROM books");
@@ -39,6 +46,7 @@ router.get("/login", (req, res) => {
 
 router.post("/login", async (req, res) => {
     const { email, password } = req.body;
+    
     // console.log(req.body);
 
     if (!email || !password) {
@@ -49,17 +57,21 @@ router.post("/login", async (req, res) => {
     const logResult = await pool.query("SELECT * FROM users where email=($1)", [
         email,
     ]);
-
-    if (password === logResult.rows[0].password) {
-        //    console.log(logResult.rows[0].fullname)
-        req.session.loggedIn = true;
-        req.session.userid = logResult.rows[0].id;
-        req.session.fullName = logResult.rows[0].fullname;
-        req.session.email = logResult.rows[0].email;
-
-        return res.redirect("/home");
+     
+    if(logResult.rows.length >0){
+        if (password === logResult.rows[0].password) {
+            //    console.log(logResult.rows[0].fullname)
+            req.session.loggedIn = true;
+            req.session.userid = logResult.rows[0].id;
+            req.session.fullName = logResult.rows[0].fullname;
+            req.session.email = logResult.rows[0].email;
+    
+            return res.redirect("/home");
+        }
+        return res.render("login", { msg: "invalid email or password" });
     }
-    return res.render("login", { msg: "invalid email or password" });
+    return res.render("login", { msg: "email doesnot exist!" });
+    
 });
 
 //Logout Page

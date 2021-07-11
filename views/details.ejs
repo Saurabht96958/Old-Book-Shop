@@ -21,7 +21,7 @@
   </head>
   <body>
     <div class="container">
-      <h1>Text Books</h1>
+      <h1>Book Shop</h1>
       <div>
         <nav class="navbar navbar-expand-sm bg-dark">
           <ul class="navbar-nav">
@@ -92,7 +92,7 @@
             <h5>Category: <%= detail.category %></h5>
             <h5>Author: <%= detail.author %></h5>
             <h5>Publisher: <%= detail.publisher %></h5>
-            <p class="btn btn-outline-primary disabled rounded-circle font-weight-bold"> $<%= detail.price %></p>
+            <p class="btn btn-outline-primary disabled rounded-circle font-weight-bold"> Rs.<%= detail.price %></p>
             <h6><%= detail.description %></h6>
              
             <form action="/cart/<%=detail.title%>/<%= detail.price%>/<%=detail.id%>" 

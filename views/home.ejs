@@ -21,7 +21,7 @@
   </head>
   <body>
     <div class="container">
-      <h1>Text Books</h1>
+      <h1>Book Shop</h1>
       <div>
         <nav class="navbar navbar-expand-sm bg-dark">
           <ul class="navbar-nav">
@@ -81,8 +81,8 @@
             />
             <div class="card-body justify-content-center">
               <h4 class="card-title text-center"><%= item.title%></h4>
-              <p class="card-text text-center"><%= item.description%></p>
-              <h1 class="text-center">$<%= item.price%></h1>
+              <!-- <p class="card-text text-center"><%= item.description%></p> -->
+              <h1 class="text-center">Rs.<%= item.price%></h1>
               <a href="/details/<%=item.bookid%>" class="btn btn-primary mt-3" >Book Details</a>
             </div>
           </div>
